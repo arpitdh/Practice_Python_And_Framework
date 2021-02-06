@@ -1,0 +1,26 @@
+There are 6 seminar halls in your college. Hall A has a capacity of 50. Hall B has a capacity of
+100. Hall C has a capacity of 200. Hall D has a capacity of 350. Hall E has a capacity of 500.
+HAll F has a capacity of 1000. Your task is to create an application to facilitate the followings -
+
+
+
+1. Reserve a hall
+
+a. A professor can request a hall while also specifying the required capacity on a
+particular day and time. The system should first check all the available halls at
+that particular time and respond with the hall that matches the hall capacity to the
+request by the professor.
+
+For example, Professor A requests that he needs a hall for 1st Nov at
+9.00AM-10.00AM with the capacity of 300. Assuming D and E are already
+booked, the system would respond with an option of F.
+
+b. The Professor then sends another request with Hall ID (in this case Hall F) and
+the system should then book the hall and update the record in the database.
+
+c. The system should handle race conditions as concurrent users can request the
+halls.
+
+
+2. Fetch details of scheduled seminars for a range of dates (eq- 1 Oct to 5 Oct) from the
+database.
