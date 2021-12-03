@@ -1,0 +1,277 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+PS C:\Users\arpit\PycharmProjects\Unzip_Files> cd ..    
+PS C:\Users\arpit\PycharmProjects> cd ..
+PS C:\Users\arpit> cd .\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project\
+PS C:\Users\arpit\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project> django-admin startproject polling_Site
+PS C:\Users\arpit\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project> cd .\polling_Site\
+PS C:\Users\arpit\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project\polling_Site> python .\manage.py startapp polls
+PS C:\Users\arpit\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project\polling_Site> python .\manage.py makemigrations polls
+Migrations for 'polls':
+  polls\migrations\0001_initial.py
+    - Create model Question
+    - Create model Choice
+PS C:\Users\arpit\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project\polling_Site> python .\manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, polls, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying polls.0001_initial... OK
+  Applying sessions.0001_initial... OK
+PS C:\Users\arpit\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project\pollin
+g_Site> python .\manage.py shell
+Python 3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)] on
+win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> import django
+>>> django.setup()
+>>> from polls.models import Question,Choice
+>>> from django.utils import timezone
+>>> q= Question(question_text="What is your name ?", pub_date=timezone.now())
+>>> q.save()
+>>> exit()
+PS C:\Users\arpit\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project\pollin
+g_Site> python .\manage.py shell
+Python 3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)] on
+win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> import django
+>>> django.setup()
+>>> from polls.models import Question, Choice
+>>> Question.objects.all()
+<QuerySet [<Question: What is your name ?>]>
+>>> q=Question.objects.get(pk=1)
+>>> q.choice_set.create(choice_text= 'Arpit',votes=0)
+<Choice: Arpit>
+>>> q.choice_set.create(choice_text= 'Abhishek',votes=0)
+<Choice: Abhishek>
+>>> q.choice_set.create(choice_text= 'Ateev',votes=0)
+<Choice: Ateev>
+>>> q.choice_set.create(choice_text= 'Anmol',votes=0)
+<Choice: Anmol>
+>>> q.save()
+>>> exit()
+PS C:\Users\arpit\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project\pollin
+g_Site> python .\manage.py createsuperuser
+Username (leave blank to use 'arpit'): arpitdh
+Email address: arpitdhingra@yahoo.com
+Password:
+Password (again):
+This password is too short. It must contain at least 8 characters.
+This password is too common.
+Bypass password validation and create user anyway? [y/N]: y
+Superuser created successfully.
+PS C:\Users\arpit\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project\pollin
+g_Site> python .\manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+December 03, 2021 - 20:46:14
+Django version 3.2.9, using settings 'polling_Site.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[03/Dec/2021 20:46:18] "GET / HTTP/1.1" 200 10697
+[03/Dec/2021 20:46:18] "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+[03/Dec/2021 20:46:18] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 8
+5876
+[03/Dec/2021 20:46:18] "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 8618
+4
+[03/Dec/2021 20:46:18] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 856
+92
+Not Found: /favicon.ico
+[03/Dec/2021 20:46:18] "GET /favicon.ico HTTP/1.1" 404 2116
+[03/Dec/2021 20:46:41] "GET /admin HTTP/1.1" 301 0
+[03/Dec/2021 20:46:41] "GET /admin/ HTTP/1.1" 302 0
+[03/Dec/2021 20:46:41] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 2214
+[03/Dec/2021 20:46:41] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 1360
+[03/Dec/2021 20:46:41] "GET /static/admin/css/login.css HTTP/1.1" 200 939
+[03/Dec/2021 20:46:41] "GET /static/admin/css/base.css HTTP/1.1" 200 19513
+[03/Dec/2021 20:46:41] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2271
+[03/Dec/2021 20:46:41] "GET /static/admin/css/responsive.css HTTP/1.1" 200 18545
+[03/Dec/2021 20:46:50] "POST /admin/login/?next=/admin/ HTTP/1.1" 200 2392
+[03/Dec/2021 20:46:59] "POST /admin/login/?next=/admin/ HTTP/1.1" 200 2392
+[03/Dec/2021 20:47:09] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[03/Dec/2021 20:47:09] "GET /admin/ HTTP/1.1" 200 3328
+[03/Dec/2021 20:47:09] "GET /static/admin/css/dashboard.css HTTP/1.1" 200 380
+[03/Dec/2021 20:47:09] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+[03/Dec/2021 20:47:09] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+[03/Dec/2021 20:47:25] "GET /admin/auth/group/ HTTP/1.1" 200 4754
+[03/Dec/2021 20:47:25] "GET /static/admin/css/changelists.css HTTP/1.1" 200 6874
+[03/Dec/2021 20:47:25] "GET /static/admin/js/core.js HTTP/1.1" 200 5698
+[03/Dec/2021 20:47:25] "GET /static/admin/js/actions.js HTTP/1.1" 200 7867
+[03/Dec/2021 20:47:25] "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+[03/Dec/2021 20:47:25] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 59
+84
+[03/Dec/2021 20:47:25] "GET /static/admin/js/urlify.js HTTP/1.1" 200 7902
+[03/Dec/2021 20:47:25] "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+[03/Dec/2021 20:47:25] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:47:25] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 287630
+[03/Dec/2021 20:47:25] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+
+[03/Dec/2021 20:47:25] "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+[03/Dec/2021 20:47:25] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+C:\Users\arpit\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project\polling_S
+ite\polls\admin.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+December 03, 2021 - 20:48:23
+Django version 3.2.9, using settings 'polling_Site.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+C:\Users\arpit\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project\polling_S
+ite\polls\admin.py changed, reloading.
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "C:\Users\arpit\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1009
+, in _bootstrap_inner
+    self.run()
+  File "C:\Users\arpit\AppData\Local\Programs\Python\Python310\lib\threading.py", line 946,
+ in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\arpit\AppData\Local\Programs\Python\Python310\lib\site-packages\django\uti
+ls\autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "C:\Users\arpit\AppData\Local\Programs\Python\Python310\lib\site-packages\django\cor
+e\management\commands\runserver.py", line 110, in inner_run
+    autoreload.raise_last_exception()
+  File "C:\Users\arpit\AppData\Local\Programs\Python\Python310\lib\site-packages\django\uti
+ls\autoreload.py", line 87, in raise_last_exception
+    raise _exception[1]
+  File "C:\Users\arpit\AppData\Local\Programs\Python\Python310\lib\site-packages\django\cor
+e\management\__init__.py", line 375, in execute
+    autoreload.check_errors(django.setup)()
+  File "C:\Users\arpit\AppData\Local\Programs\Python\Python310\lib\site-packages\django\uti
+ls\autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "C:\Users\arpit\AppData\Local\Programs\Python\Python310\lib\site-packages\django\__i
+nit__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "C:\Users\arpit\AppData\Local\Programs\Python\Python310\lib\site-packages\django\app
+s\registry.py", line 122, in populate
+    app_config.ready()
+  File "C:\Users\arpit\AppData\Local\Programs\Python\Python310\lib\site-packages\django\con
+trib\admin\apps.py", line 27, in ready
+    self.module.autodiscover()
+  File "C:\Users\arpit\AppData\Local\Programs\Python\Python310\lib\site-packages\django\con
+trib\admin\__init__.py", line 24, in autodiscover
+    autodiscover_modules('admin', register_to=site)
+  File "C:\Users\arpit\AppData\Local\Programs\Python\Python310\lib\site-packages\django\uti
+ls\module_loading.py", line 47, in autodiscover_modules
+    import_module('%s.%s' % (app_config.name, module_to_search))
+  File "C:\Users\arpit\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py",
+line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\arpit\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project\p
+olling_Site\polls\admin.py", line 6, in <module>
+    admin.site.registr(Question)
+  File "C:\Users\arpit\AppData\Local\Programs\Python\Python310\lib\site-packages\django\uti
+ls\functional.py", line 247, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AdminSite' object has no attribute 'registr'. Did you mean: 'register'?
+PS C:\Users\arpit\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project\pollin
+g_Site> python .\manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+December 03, 2021 - 20:49:25
+Django version 3.2.9, using settings 'polling_Site.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[03/Dec/2021 20:49:31] "GET /admin/auth/group/ HTTP/1.1" 200 5562
+[03/Dec/2021 20:49:31] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:50:02] "GET /admin/polls/question/ HTTP/1.1" 200 6403
+[03/Dec/2021 20:50:02] "GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+[03/Dec/2021 20:50:02] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:50:02] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 304 0
+
+[03/Dec/2021 20:50:02] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 304 0
+[03/Dec/2021 20:50:02] "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 304 0
+[03/Dec/2021 20:50:04] "GET /admin/polls/question/1/change/ HTTP/1.1" 200 6888
+[03/Dec/2021 20:50:04] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:50:04] "GET /static/admin/js/calendar.js HTTP/1.1" 200 8466
+[03/Dec/2021 20:50:04] "GET /static/admin/css/forms.css HTTP/1.1" 200 8804
+[03/Dec/2021 20:50:04] "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 492
+[03/Dec/2021 20:50:04] "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19634
+
+[03/Dec/2021 20:50:04] "GET /static/admin/css/widgets.css HTTP/1.1" 200 11097
+[03/Dec/2021 20:50:04] "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+[03/Dec/2021 20:50:04] "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+[03/Dec/2021 20:50:22] "GET /admin/polls/question/add/ HTTP/1.1" 200 6569
+[03/Dec/2021 20:50:22] "GET /static/admin/css/base.css HTTP/1.1" 304 0
+[03/Dec/2021 20:50:22] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+[03/Dec/2021 20:50:22] "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+[03/Dec/2021 20:50:22] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+[03/Dec/2021 20:50:22] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:51:10] "POST /admin/polls/question/add/ HTTP/1.1" 302 0
+[03/Dec/2021 20:51:10] "GET /admin/polls/question/ HTTP/1.1" 200 6836
+[03/Dec/2021 20:51:10] "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+[03/Dec/2021 20:51:10] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+[03/Dec/2021 20:51:10] "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+[03/Dec/2021 20:51:10] "GET /static/admin/js/core.js HTTP/1.1" 304 0
+[03/Dec/2021 20:51:10] "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+[03/Dec/2021 20:51:10] "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+[03/Dec/2021 20:51:10] "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+[03/Dec/2021 20:51:10] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[03/Dec/2021 20:51:10] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:51:10] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+[03/Dec/2021 20:51:10] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+[03/Dec/2021 20:51:10] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+[03/Dec/2021 20:51:10] "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+[03/Dec/2021 20:51:17] "GET /admin/polls/choice/ HTTP/1.1" 200 6985
+[03/Dec/2021 20:51:17] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:51:26] "GET /admin/polls/choice/4/change/ HTTP/1.1" 200 7857
+[03/Dec/2021 20:51:26] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:51:26] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+[03/Dec/2021 20:51:29] "GET /admin/polls/choice/add/ HTTP/1.1" 200 7613
+[03/Dec/2021 20:51:29] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:51:36] "POST /admin/polls/choice/add/ HTTP/1.1" 302 0
+[03/Dec/2021 20:51:36] "GET /admin/polls/choice/add/ HTTP/1.1" 200 7840
+[03/Dec/2021 20:51:36] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:51:43] "POST /admin/polls/choice/add/ HTTP/1.1" 302 0
+[03/Dec/2021 20:51:43] "GET /admin/polls/choice/add/ HTTP/1.1" 200 7840
+[03/Dec/2021 20:51:43] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:51:51] "POST /admin/polls/choice/add/ HTTP/1.1" 302 0
+[03/Dec/2021 20:51:51] "GET /admin/polls/choice/add/ HTTP/1.1" 200 7840
+[03/Dec/2021 20:51:51] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:51:57] "POST /admin/polls/choice/add/ HTTP/1.1" 302 0
+[03/Dec/2021 20:51:57] "GET /admin/polls/choice/add/ HTTP/1.1" 200 7840
+[03/Dec/2021 20:51:57] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:51:59] "GET /admin/polls/choice/ HTTP/1.1" 200 7789
+[03/Dec/2021 20:51:59] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:52:02] "GET /admin/polls/choice/5/change/ HTTP/1.1" 200 7845
+[03/Dec/2021 20:52:02] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[03/Dec/2021 20:52:08] "POST /admin/polls/choice/5/change/ HTTP/1.1" 302 0
+[03/Dec/2021 20:52:08] "GET /admin/polls/choice/5/change/ HTTP/1.1" 200 8069
+[03/Dec/2021 20:52:08] "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+PS C:\Users\arpit\Documents\Git\arpitdh\Practice_Python_And_Framework\Django_Project\pollin
+g_Site>
